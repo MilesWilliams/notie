@@ -1,0 +1,8 @@
+<div *ngIf="workspaces$ | async as spaces">
+  <div *ngIf="spaces.length > 0 else noSpaces">
+
+  </div>
+  <ng-template #noSpaces>
+    <notie-no-spaces></notie-no-spaces>
+  </ng-template>
+</div>

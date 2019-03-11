@@ -1,0 +1,22 @@
+:host {
+    width: 100%;
+    max-width: 33vw;
+    >div {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.425);
+        display: flex;
+        align-items: center;
+        padding: 0 10px 4px 10px;
+        i {
+            margin-right: 10px;
+        }
+        input {
+            all: unset;
+            width: 100%;
+            font-size: 12px;
+            &::placeholder {
+                color: var(--primary-font-color);
+                font-style: italic;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+:host {
+    button {
+        border-radius: 50%;
+        background: #FFFFFF;
+        box-shadow: 0 2px 4px 0 rgba(46,96,119,0.49);
+        width: 58px;
+        height: 58px;
+        cursor: pointer;
+        i {
+            display: flex;
+            svg {
+                margin: auto;
+                max-width: 27px;
+            }
+        }
+        &.--small {
+            width: 31px;
+            height: 31px;
+        }
+
+        &.--warn {
+            background-color: var(--color-warning);
+        }
+    }
+}

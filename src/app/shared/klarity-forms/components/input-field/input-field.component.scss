@@ -1,0 +1,16 @@
+:host {
+    div {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+        
+        label {
+            margin-bottom: 5px;
+        }
+
+        input {
+            border: 1px solid rgba(108, 117, 125, 0.4);
+            padding: 0.5rem 1.2rem;
+        }
+    }
+}

@@ -1,0 +1,5 @@
+<div [formGroup]="childFormGroup">
+  <label [for]="label">{{label}}</label>
+  <input [type]="type" [name]="label" [formControlName]="childFormControlName" [placeholder]="placeholder">
+  <p *ngIf="onError.length && childFormGroup.touched && childFormGroup.invalid" class="error">{{onError}}</p>
+</div>

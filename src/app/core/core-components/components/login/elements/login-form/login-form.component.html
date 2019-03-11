@@ -1,0 +1,9 @@
+<div *ngIf="form">
+  <h1>Login</h1>
+  <form-input-field [childFormGroup]="form.controls.email_address" childFormControlName="email_address" type="email"
+    label="Email" placeholder="Enter your email" [onError]="'Please enter a valid email'"></form-input-field>
+  <form-input-field [childFormGroup]="form.controls.password" childFormControlName="password" type="password" label="Password"
+    placeholder="Enter your password" [onError]="'Please enter your account password'"></form-input-field>
+
+  <notie-btn (click)="onSubmit()">Login</notie-btn>
+</div>

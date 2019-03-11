@@ -1,0 +1,24 @@
+html {
+    font-family: Rubik, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #F4F6FC;
+}
+
+h1 {
+    font: {
+        size: 13px;
+        weight: 500;
+    };
+    color: var(--accent-font-color);
+    letter-spacing: 1.21px;
+}
+
+h2 {
+    font: {
+        size: 15px;
+        weight: 700;
+    }
+    color: var(--primary-font-color);
+    letter-spacing: 0;
+    line-height: 22px;
+}
