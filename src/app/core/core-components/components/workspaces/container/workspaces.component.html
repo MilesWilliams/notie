@@ -1,8 +1,11 @@
 <div *ngIf="workspaces$ | async as spaces">
-  <div *ngIf="spaces.length > 0 else noSpaces">
-
-  </div>
+  <ul *ngIf="spaces.length > 0 else noSpaces">
+    <li *ngFor="let space of spaces" >
+      <notie-workspace [space]="space"></notie-workspace>
+    </li>
+  </ul>
   <ng-template #noSpaces>
     <notie-no-spaces></notie-no-spaces>
   </ng-template>
+  <notie-btn (click)="addWorkspace()"></notie-btn>
 </div>

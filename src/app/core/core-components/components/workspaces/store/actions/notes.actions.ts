@@ -26,12 +26,13 @@ export const CREATE_NEW_NOTE_FAIL = Utils.Type('[Workspace: Create-Note] Create 
 
 export class CreateNewNote implements Action {
 	readonly type = CREATE_NEW_NOTE;
-	constructor(public payload: Note) {}
+	constructor(public payload: {note: Note, space_id: string}) {}
 };
 
 export class CreateNewNoteSuccess implements Action {
 	public readonly type = CREATE_NEW_NOTE_SUCCESS;
-	constructor(public payload: Note) {}
+	// constructor(public payload: {note: Note, space_id: string}) {}
+	constructor(public payload: any) {}
 };
 
 export class CreateNewNoteFail implements Action {
@@ -64,7 +65,7 @@ export const DELETE_NOTE_FAIL = Utils.Type('[Workspace: Delete-Note] Delete note
 
 export class DeleteNote implements Action {
 	readonly type = DELETE_NOTE;
-	constructor(public payload: number) {}
+	constructor(public payload: string) {}
 };
 
 export class DeleteNoteSuccess implements Action {

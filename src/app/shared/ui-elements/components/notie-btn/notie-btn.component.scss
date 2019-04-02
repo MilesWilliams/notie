@@ -13,9 +13,22 @@
                 max-width: 27px;
             }
         }
+
         &.--small {
             width: 31px;
             height: 31px;
+
+            .icon--delete {
+                margin-left:2px;
+            }
+
+            .icon--add {
+                margin-top: 3.5px;
+
+                svg {
+                    height: 15px;
+                }
+            }
         }
 
         &.--warn {

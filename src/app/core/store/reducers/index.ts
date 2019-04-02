@@ -10,6 +10,7 @@ import {
 } from '@ngrx/store';
 import * as fromRouter from '@ngrx/router-store';
 import * as fromAuth from './auth.reducer';
+import * as fromSearch from './search.reducer';
 
 import { localStorageSync, LocalStorageConfig } from 'ngrx-store-localstorage';
 
@@ -18,15 +19,17 @@ import { RouterStateUrl } from '../router';
 export interface CoreState {
 	routerReducer: fromRouter.RouterReducerState<RouterStateUrl>;
 	auth: fromAuth.IAuthState;
+	search: fromSearch.ISearchState;
 }
 
 export const reducers: ActionReducerMap<CoreState> = {
 	routerReducer: fromRouter.routerReducer,
 	auth: fromAuth.reducer,
+	search: fromSearch.reducer
 };
 
 export const storeConfig: LocalStorageConfig = {
-	keys: ['routerReducer', 'auth'],
+	keys: ['routerReducer', 'auth', 'search'],
 	rehydrate: true,
 };
 

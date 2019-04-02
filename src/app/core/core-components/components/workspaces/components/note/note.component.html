@@ -1,3 +1,12 @@
-<p>
-  note works!
-</p>
+<div class="outer-container">
+  <i>
+    <a *ngIf="note.icon && note.icon.length > 1 else initials" [href]="note.icon"></a>
+    <ng-template #initials><span>DD</span></ng-template>
+  </i>
+  <div class="note-details">
+    <h2>
+      Title here
+    </h2>
+    <p>Description here </p>
+  </div>
+</div>

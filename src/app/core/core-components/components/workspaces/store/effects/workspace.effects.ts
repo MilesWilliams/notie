@@ -9,6 +9,9 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { WortkspaceService } from 'src/app/core/services';
 import { Workspace } from 'src/app/core/interfaces/workspace/workspace.interface';
+import { HttpResponse } from 'src/app/core/interfaces/response/http-response.interface';
+import { CreateNewNoteSuccess } from '../actions';
+
 
 @Injectable()
 export class WorkSpaceEffects {
@@ -19,7 +22,7 @@ export class WorkSpaceEffects {
             return this._svc
                 .All()
                 .pipe(
-                    map(res => new WorkspaceActions.LoadWorkspacesSuccess(<Workspace[]>res)),
+                    map((res: HttpResponse<Workspace[]>) => new WorkspaceActions.LoadWorkspacesSuccess(<Workspace[]>res.values)),
                     catchError(error =>
                         of(new WorkspaceActions.LoadWorkspacesFail(error))
                     )
@@ -38,7 +41,7 @@ export class WorkSpaceEffects {
                 return this._svc
                     .Create(space)
                     .pipe(
-                        map(res => new WorkspaceActions.CreateNewWorkspaceSuccess(<Workspace>res)),
+                        map((res: HttpResponse<Workspace>)  => new WorkspaceActions.CreateNewWorkspaceSuccess(<Workspace>res.values)),
                         catchError(error =>
                             of(new WorkspaceActions.CreateNewWorkspaceFail(error))
                         )
@@ -57,7 +60,7 @@ export class WorkSpaceEffects {
                     return this._svc
                         .Delete(id)
                         .pipe(
-                            map(res => new WorkspaceActions.DeleteWorkspaceSuccess(<number>res)),
+                            map((res: HttpResponse<string>)  => new WorkspaceActions.DeleteWorkspaceSuccess(<string>res.values['_id'])),
                             catchError(error =>
                                 of(new WorkspaceActions.DeleteWorkspaceFail(error))
                             )

@@ -15,10 +15,10 @@ export function GetStringKeyEntities(entities): any[] {
 
 export function MapToEntities(obj, state: any) {
 	return obj.reduce(
-		(entities: { [id: number]: any }, page: any) => {
+		(entities: { [id: string]: any }, page: any) => {
 			return {
 				...entities,
-				[page.id]: page,
+				[page._id]: page,
 			};
 		},
 		{ ...state.entities }

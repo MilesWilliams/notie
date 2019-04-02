@@ -1,0 +1,72 @@
+:host {
+
+
+    header {
+        position: relative;
+        >div:not(.icon-container) {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            all: unset;
+            text-align: left;
+        }
+    }
+
+    .isHovering {
+        .icon-container {
+            opacity: 1;
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+    .icon-container {
+        opacity: 0;
+        position: absolute;
+        right: 15px;
+        transition: all 0.3s ease-in-out;
+        
+        &.delete-icon {
+            top: -45px;
+            right: -72px;
+        }
+        &.add-icon {
+            bottom: -15px;
+            right: -15px;
+        }
+
+        &.save-icon {
+            opacity: 1;
+            bottom: 0;
+            right: -15px;
+            bottom: 30px;
+        }
+    }
+    
+
+    footer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    p {
+        line-height: calc(var(--workspace-card) - 77px);
+        margin: 0;
+    }
+
+
+    ul {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 3%;
+        margin: 0;
+        padding: 0;
+
+        li {
+            list-style: none;
+            padding: 0;
+        }
+    }
+}

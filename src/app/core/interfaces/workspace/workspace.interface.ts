@@ -6,9 +6,9 @@ import { Note } from "../notes/note.interface";
  * @description Workspace interface
  */
 export interface Workspace {
-    id: number;
+    _id?: string;
     created_by: number;
-    created_date: number;
+    created_date: string;
     description: string;
     modified_by:  number;
     modified_date: string;

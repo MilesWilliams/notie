@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Utils } from '../../../../../../utils';
 import { Workspace } from 'src/app/core/interfaces/workspace/workspace.interface';
+import { Note } from 'src/app/core/interfaces/notes/note.interface';
 
 export const LOAD_WORKSPACES = Utils.Type('[Workspace: Load] Load all workspace');
 export const LOAD_WORKSPACES_SUCCESS = Utils.Type('[Workspace: Load] Load all workspace success');
@@ -45,12 +46,12 @@ export const DELETE_WORKSPACE_FAIL = Utils.Type('[Workspace: Delete] Delete work
 
 export class DeleteWorkspace implements Action {
 	readonly type = DELETE_WORKSPACE;
-	constructor(public payload: number) {}
+	constructor(public payload: string) {}
 };
 
 export class DeleteWorkspaceSuccess implements Action {
 	public readonly type = DELETE_WORKSPACE_SUCCESS;
-	constructor(public payload: number) {}
+	constructor(public payload: string) {}
 };
 
 export class DeleteWorkspaceFail implements Action {
@@ -58,6 +59,11 @@ export class DeleteWorkspaceFail implements Action {
 	constructor(public payload: any) {}
 };
 
+export const INSERT_NOTE = Utils.Type('[Workspace: Note insert] Insert new note');
+export class InsertNewNote implements Action {
+	public readonly type = INSERT_NOTE;
+	constructor(public payload: {note: Note, workspace_id: string}) {}
+};
 /**
 * WorkspaceActions type.
 * @type {Actions}
@@ -71,4 +77,5 @@ export type WorkspaceActions =
 | DeleteWorkspaceFail
 | LoadWorkspaces
 | LoadWorkspacesSuccess
-| LoadWorkspacesFail;
+| LoadWorkspacesFail
+| InsertNewNote;

@@ -9,6 +9,7 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { NotesService } from 'src/app/core/services';
 import { Note } from 'src/app/core/interfaces/notes/note.interface';
+import { HttpResponse } from 'src/app/core/interfaces/response/http-response.interface';
 
 @Injectable()
 export class NotesEffects {
@@ -19,7 +20,7 @@ export class NotesEffects {
             return this._svc
                 .All()
                 .pipe(
-                    map(res => new NotesActions.LoadNotesSuccess(<Note[]>res)),
+                    map((res: HttpResponse<Note[]>)  => new NotesActions.LoadNotesSuccess(<Note[]>res.values)),
                     catchError(error =>
                         of(new NotesActions.LoadNotesFail(error))
                     )
@@ -34,11 +35,11 @@ export class NotesEffects {
             map(
                 (action: NotesActions.CreateNewNote) => action.payload
             ),
-            switchMap((note) => {
+            switchMap(({note, space_id}) => {
                 return this._svc
-                    .Create(note)
+                    .Create(note, space_id)
                     .pipe(
-                        map(res => new NotesActions.CreateNewNoteSuccess(<Note>res)),
+                        map((res: HttpResponse<Note>)  => new NotesActions.CreateNewNoteSuccess(res.values)),
                         catchError(error =>
                             of(new NotesActions.CreateNewNoteFail(error))
                         )
@@ -57,7 +58,7 @@ export class NotesEffects {
                     return this._svc
                         .Delete(id)
                         .pipe(
-                            map(res => new NotesActions.DeleteNoteSuccess(<number>res)),
+                            map((res: HttpResponse<number>)  => new NotesActions.DeleteNoteSuccess(<number>res.values)),
                             catchError(error =>
                                 of(new NotesActions.DeleteNoteFail(error))
                             )

@@ -4,7 +4,7 @@
  * @description Note interface
  */
 export interface Note {
-    id: number;
+    _id?: number;
     content: string;
     created_by: number;
     created_date: string;

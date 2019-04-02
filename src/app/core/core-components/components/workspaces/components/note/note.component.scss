@@ -1,0 +1,54 @@
+:host {
+    >div {
+        height: 117px;
+        width: 269px;
+        border: 1px solid #E0E7FF;
+        border-radius: 4px;
+        text-align: left;
+        box-sizing: border-box;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            border-color: #2E5BFF;
+            transition: all 0.3s ease-in-out;
+        }
+
+        h2 {
+            font-family: Rubik;
+            font-size: 15px;
+            color: #2E384D;
+            letter-spacing: 0;
+            line-height: 22px;
+            margin: 0;
+        }
+
+        p {
+            font-family: Rubik;
+            font-size: 15px;
+            color: #8798AD;
+            letter-spacing: 0;
+            line-height: 22px;
+            margin: 0;
+        }
+
+        i {
+            display: flex;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(128, 151, 177, 0.1);
+            border-radius: 50%;
+            margin-right: 15px;
+
+            span {
+                font-style: normal;
+                font-weight: 500;
+                margin: auto;
+            }
+        }
+    }
+}

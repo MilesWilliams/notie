@@ -1,0 +1,10 @@
+
+<notie-card (onHover)="showIcons()">
+  <header>
+      <div [formGroup]="workspaceForm">
+          <input type="text" [formControlName]="'name'">
+          <textarea cols="30" rows="1" [formControlName]="'description'"></textarea>
+        </div>
+  </header>
+
+</notie-card>

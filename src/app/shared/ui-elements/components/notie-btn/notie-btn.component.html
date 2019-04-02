@@ -3,8 +3,8 @@
     '--large': size === 'large',
     '--warn': icon === 'delete'
 }">
-    <i>
-        <svg *ngIf="icon === 'add' else deleteIcon" width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <i [class]="'icon--'+icon" [ngSwitch]="icon">
+        <svg  *ngSwitchCase="'add'" width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Macbook-pro-15" transform="translate(-1420.000000, -1629.000000)" fill="#2E6077">
                     <g id="Group-2-Copy-3" transform="translate(1398.000000, 1607.000000)">
@@ -15,9 +15,8 @@
                 </g>
             </g>
         </svg>
-    </i>
-    <ng-template #deleteIcon>
-        <svg width="12px" height="15px" viewBox="0 0 12 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <svg *ngSwitchCase="'delete'" width="12px" height="15px" viewBox="0 0 12 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                 <g id="Macbook-pro-15" transform="translate(-2775.000000, -1121.000000)" fill="#FFFFFF">
                     <g id="Group-3-Copy-2" transform="translate(2765.000000, 1113.000000)">
@@ -31,5 +30,17 @@
                 </g>
             </g>
         </svg>
-    </ng-template>
+
+        <svg *ngSwitchCase="'save'" width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Macbook-pro-15-Copy" transform="translate(-2815.000000, -614.000000)" fill="#2E6077" fill-rule="nonzero">
+                    <g id="ic-save-24px" transform="translate(2815.000000, 614.000000)">
+                        <path d="M11.6666667,0 L1.66666667,0 C0.741666667,0 0,0.75 0,1.66666667 L0,13.3333333 C0,14.25 0.741666667,15 1.66666667,15 L13.3333333,15 C14.25,15 15,14.25 15,13.3333333 L15,3.33333333 L11.6666667,0 Z M7.5,13.3333333 C6.11666667,13.3333333 5,12.2166667 5,10.8333333 C5,9.45 6.11666667,8.33333333 7.5,8.33333333 C8.88333333,8.33333333 10,9.45 10,10.8333333 C10,12.2166667 8.88333333,13.3333333 7.5,13.3333333 Z M10,5 L1.66666667,5 L1.66666667,1.66666667 L10,1.66666667 L10,5 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </i>
+
+    <span *ngIf="text">{{text}}</span>
 </button>

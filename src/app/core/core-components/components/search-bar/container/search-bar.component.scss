@@ -13,6 +13,7 @@
             all: unset;
             width: 100%;
             font-size: 12px;
+            text-align: left;
             &::placeholder {
                 color: var(--primary-font-color);
                 font-style: italic;

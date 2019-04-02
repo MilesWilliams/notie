@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
 	styleUrls: ['./notie-btn.component.scss'],
 })
 export class NotieBtnComponent {
-	@Input() icon: 'add' | 'delete' = 'add';
+	@Input() icon: 'add' | 'delete' | 'save' = 'add';
 	@Input() size: 'large' | 'small' ='large';
+	@Input() text?: string;
 }

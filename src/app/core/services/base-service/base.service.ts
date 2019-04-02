@@ -10,58 +10,63 @@ import { App } from '../../config/app.config';
 })
 export class BaseService {
 	/**
-	 * @description The base api url
-	 * @type {string}
-	 * @memberof BaseService
-	 */
+	* 
+	* @description The base api url
+	* @type {string}
+	* @memberof BaseService
+	*/
 	public readonly _domain: string = App.api_domain;
 	/**
-	 * @description The modifier is used to add unique api endpoint identifer
-	 * @type {string}
-	 * @memberof BaseService
-	 */
+	*
+	* @description The base api url
+	* @type {string}
+	* @memberof BaseService
+	*/
+	public readonly _port: number = App.domain_port;
+	/**
+	* @description The modifier is used to add unique api endpoint identifer
+	* @type {string}
+	* @memberof BaseService
+	*/
 	public _url_modifer: string;
 
 	constructor(protected _http: HttpClient) { }
 
 	/**
-	 *
-	 *
-	 * @readonly
-	 * @type {string}
-	 * @memberof BaseService
-	 */
+	*
+	* @readonly
+	* @type {string}
+	* @memberof BaseService
+	*/
 	get BaseURL(): string {
-		return this._domain;
+		return `${this._domain}:${this._port}`;
 	}
 
 	/**
-	 *
-	 *
-	 * @type {string}
-	 * @memberof BaseService
-	 */
+	*
+	* @type {string}
+	* @memberof BaseService
+	*/
 	get UrlModifer(): string {
 		return this._url_modifer;
 	}
 
 	/**
-	 *
-	 * @memberof BaseService
-	 * @description the url modifer is used to add custom endpoints onto the _domain.
-	 * @example ${_domain}/{'url_modifer'}
-	 */
+	*
+	* @memberof BaseService
+	* @description the url modifer is used to add custom endpoints onto the _domain.
+	* @example ${_domain}/{'url_modifer'}
+	*/
 	set UrlModifer(modifer: string) {
 		this._url_modifer = modifer;
 	}
 
 	/**
-	 *
-	 *
-	 * @readonly
-	 * @type {string}
-	 * @memberof BaseService
-	 */
+	*
+	* @readonly
+	* @type {string}
+	* @memberof BaseService
+	*/
 	get URL(): string {
 		return this.UrlModifer
 			? `${this.BaseURL}/${this.UrlModifer}`
@@ -69,63 +74,58 @@ export class BaseService {
 	}
 
 	/**
-	 *
-	 *
-	 * @template T
-	 * @returns {Observable<T>}
-	 * @memberof BaseService
-	 */
+	*
+	* @template T
+	* @returns {Observable<T>}
+	* @memberof BaseService
+	*/
 	public All<T>(): Observable<T> {
 		return this._http.get<T>(this.URL);
 	}
 
 	/**
-	 *
-	 * @template T
-	 * @param {Object} values
-	 * @param {string} [insert_custom_url]
-	 * @returns {Observable<any>}
-	 * @memberof BaseService
-	 */
+	*
+	* @template T
+	* @param {Object} values
+	* @param {string} [insert_custom_url]
+	* @returns {Observable<any>}
+	* @memberof BaseService
+	*/
 	public Create<T>(
 		values: Object,
 		insert_custom_url?: string
 	): Observable<any> {
 		const url: string = insert_custom_url
 			? insert_custom_url
-			: `${this.URL}/create`;
+			: `${this.URL}`;
 		return this._http.post<T>(url, values);
 	}
 
 	/**
-	 *
-	 *
-	 * @template T
-	 * @param {Object} values
-	 * @returns {Observable<any>}
-	 * @memberof BaseService
-	 */
+	*
+	* @template T
+	* @param {Object} values
+	* @returns {Observable<any>}
+	* @memberof BaseService
+	*/
 	public Update<T>(values: any, insert_custom_url?: string): Observable<any> {
 		const url: string = insert_custom_url
 			? insert_custom_url
 			: `${this.URL}/${values.id}`;
-		return this._http.patch<T>(this.URL, values);
+		return this._http.patch<T>(url, values);
 	}
 
 	/**
-	 *
-	 *
-	 * @param {number} id
-	 * @returns {Observable<number>}
-	 * @memberof BaseService
-	 */
-	public Delete(id: number, insert_custom_url?: string): Observable<number> {
+	*
+	* @param {number} id
+	* @returns {Observable<number>}
+	* @memberof BaseService
+	*/
+	public Delete(id: string, insert_custom_url?: string): Observable<any> {
 		const url: string = insert_custom_url
 			? insert_custom_url
 			: `${this.URL}/${id}`;
-		const params: Params = {
-			id,
-		};
-		return this._http.delete<number>(this.URL, params);
+		console.log(url);
+		return this._http.delete<any>(url);
 	}
 }

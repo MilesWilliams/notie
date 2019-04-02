@@ -42,9 +42,9 @@ export function reducer(
         }
         case fromActions.CREATE_NEW_NOTE_SUCCESS: {
             const notes = state.notes
-            const newNote = action.payload;
+            const notePkg = action.payload;
 
-            notes[newNote.id] = newNote;
+            notes[notePkg.note._id] = notePkg.note;
 
             return {
                 ...state,

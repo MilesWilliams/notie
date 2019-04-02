@@ -18,7 +18,11 @@ export interface AppConfig {
 	/*
     * the base cdn domain url if there is one
     */
-	cdn_domain?: string;
+    cdn_domain?: string;
+    /*
+    * the base domain port if there is one
+    */
+	domain_port?: number;
 	/*
     * is the site in production or developement
     */

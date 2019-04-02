@@ -1,3 +1,38 @@
-<p>
-  workspace works!
-</p>
+<notie-card *ngIf="space" (mouseover)="isHovering = true" (mouseout)="isHovering = false">
+
+  <header [class.isHovering]="isHovering">
+        <div [formGroup]="workspaceForm">
+            <input type="text" [formControlName]="'name'">
+            <textarea cols="30" rows="1" [formControlName]="'description'"></textarea>
+          </div>
+
+          <div class="icon-container delete-icon">
+            <notie-btn (click)="deleteWorkspace()" icon="delete" size="small"></notie-btn>
+          </div>
+    </header>
+
+    <div class="body notes-container">
+      <ul *ngIf="space.notes && space.notes.length > 0 else noNotes">
+        <ng-template ngFor let-note [ngForOf]="space.notes">
+          <li>
+            <notie-note [note]="note"></notie-note>
+          </li>
+        </ng-template>
+      </ul>
+
+      <ng-template #noNotes>
+        <p>This board has no notes</p>
+      </ng-template>
+    </div>
+
+    <footer [class.isHovering]="isHovering">
+      <div class="icon-container save-icon" *ngIf="isEdited">
+        <notie-btn  (click)="saveChanges()"[icon]="'save'" size="small" tooltip="Save changes"></notie-btn>
+      </div>
+
+      <div class="icon-container add-icon">
+        <notie-btn (click)="addNote()" icon="add" size="small"></notie-btn>
+      </div>
+    </footer>
+  
+  </notie-card>

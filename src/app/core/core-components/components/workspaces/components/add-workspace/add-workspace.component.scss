@@ -1,0 +1,12 @@
+:host {
+    header {
+        >div {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            all: unset;
+            text-align: left;
+        }
+    }
+}

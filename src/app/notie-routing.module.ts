@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './core/core-components/components/login/container/login.component';
 import { IsAuthenticatedGuard } from './core/guards';
+import { Guards } from './core/core-components/components/workspaces/guards';
+import { WorkspaceLoadedGuard } from './core/core-components/components/workspaces/guards/onload.guard';
 
 const routes: Routes = [
 	{
@@ -11,12 +13,12 @@ const routes: Routes = [
 	},
 	{
 		path: 'login',
-		component: LoginComponent,
+		component: LoginComponent		
 	},
 	{
 		path: 'dashboard',
 		loadChildren: './features/features.module#FeaturesModule',
-		// canActivate: [IsAuthenticatedGuard],
+		canActivate: [WorkspaceLoadedGuard]
 	},
 ];
 

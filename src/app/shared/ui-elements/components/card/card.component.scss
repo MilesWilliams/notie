@@ -1,0 +1,38 @@
+:host {
+    .card-container {
+        width: 93vw;
+        min-height: var(--workspace-card);
+        background-color: white;
+        margin: 0 auto 100px auto;
+
+        padding: 32px 56px;
+        box-sizing: border-box;
+        box-shadow: 0 2px 13px 10px rgba(46,91,255,0.08);
+        position: relative;
+
+        ::ng-deep {
+            header {
+                input {
+                    font: {
+                        size: 13px;
+                        weight: 500;
+                    };
+                    color: var(--accent-font-color);
+                    letter-spacing: 1.21px;
+
+                    margin-bottom: 25px;
+                }
+
+                textarea {
+                    font: {
+                        size: 15px;
+                        weight: 500;
+                    }
+                    color: var(--primary-font-color);
+                    letter-spacing: 0;
+                    line-height: 22px;
+                }
+            }
+        }
+    }
+}
